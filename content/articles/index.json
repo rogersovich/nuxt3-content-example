@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "The Cats can live 9 Times ?",
+    "tags": ["family"],
+    "image": "supercat.png"
+  },
+  {
+    "id": 2,
+    "title": "Megalodon is still Alive !",
+    "tags": ["Myth"],
+    "image": "shark-fish.png"
+  },
+  {
+    "id": 3,
+    "title": "Painting from John Doe",
+    "tags": ["story"],
+    "image": "swordman.png"
+  }
+]
