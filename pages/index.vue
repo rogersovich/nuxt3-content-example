@@ -10,17 +10,19 @@ const { data } = await useAsyncData("articles", () => {
 const articles = data.value?.body as ArticleResponse[]
 </script>
 <template>
-  <div class="w-full fcc pt-10">
+  <div class="w-full md:flex items-center justify-center pt-10">
     <div>
       <div class="text-hero">
-        Check Our Blogs to Blow Mind
+        I Can Show You The World
         <br />
-        <div class="rainbow-text">Mindful. Attrative. Easy.</div>
+        <div class="rainbow-text leading-snug">
+          Shining. Shimering. Splendid.
+        </div>
       </div>
       <div>
         <div class="mt-14">
           <div
-            class="mb-8 text-xl text-slate-500 font-medium uppercase text-center tracking-wide"
+            class="mb-8 text-lg md:text-xl text-slate-500 font-medium uppercase text-center tracking-wide"
           >
             Recommendation Blogs
           </div>
@@ -28,7 +30,7 @@ const articles = data.value?.body as ArticleResponse[]
         </div>
         <div class="mt-14">
           <div
-            class="mb-8 text-xl text-slate-500 font-medium uppercase text-center tracking-wide"
+            class="mb-8 text-lg md:text-xl text-slate-500 font-medium uppercase text-center tracking-wide"
           >
             Recommendation Blogs
           </div>

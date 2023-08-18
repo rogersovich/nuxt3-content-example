@@ -1,26 +1,25 @@
 <script setup lang="ts">
-const { data } = await useAsyncData("homepage", () => {
-  return queryContent("/articles").find()
+const { data } = await useAsyncData("articles", () => {
+  return queryContent("articles").where({ _type: "json" }).findOne()
 })
 
-const blog1 = data.value ? data.value[0] : []
+const articles = data.value?.body as ArticleResponse[]
 </script>
 <template>
-  <div class="p-6">
-    <div class="text-lg text-red-500">Kucing Merah</div>
-    <br />
-    <ContentRenderer :value="blog1">
-      <template #empty>
-        <p>No content found.</p>
-      </template>
-    </ContentRenderer>
-    <NuxtLink to="/">Back Home</NuxtLink>
-    <div class="grid-12 gap-4">
-      <div class="col-span-4">
-        <div class="card-base bg-slate-100">
-          <h1 class="text-lg font-medium">Title</h1>
-          <div class="mt-0.5">hsdfdsfds</div>
+  <div class="w-full md:flex items-center justify-center pt-10">
+    <div>
+      <div class="text-hero">
+        Check Our Blogs to Blow Mind
+        <br />
+        <div class="rainbow-text">Mindful. Attrative. Easy.</div>
+      </div>
+      <div class="mt-14 lg:min-w-[70%]">
+        <div
+          class="mb-8 text-xl text-slate-500 font-medium uppercase text-center tracking-wide"
+        >
+          List of Blogs
         </div>
+        <ArticleCards :articles="articles" />
       </div>
     </div>
   </div>

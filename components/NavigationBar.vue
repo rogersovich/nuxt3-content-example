@@ -1,6 +1,19 @@
 <script setup lang="ts">
-const { x, y } = useWindowScroll()
-const active = ref(true)
+const { y } = useWindowScroll()
+const route = useRoute()
+
+const NAV_OPTIONS = [
+  {
+    title: "Blogs",
+    route: "/blogs",
+    key: "blogs",
+  },
+  {
+    title: "Documentation",
+    route: "/",
+    key: "documentation",
+  },
+]
 </script>
 <template>
   <div
@@ -10,17 +23,20 @@ const active = ref(true)
       })
     "
   >
-    <NuxtLink to="/">
-      <div class="text-3xl font-bold">
+    <IconsMenu class="w-8 h-8 text-primary md:hidden" />
+    <NuxtLink to="/" class="grow md:grow-0 text-center">
+      <div class="text-2xl md:text-3xl font-bold">
         Nuxt <span class="rainbow-text">Content</span>
       </div>
     </NuxtLink>
-    <div class="fcc gap-4">
-      <NuxtLink to="/blogs" class="hover:border-b-2 border-primary">
-        Blogs
-      </NuxtLink>
-      <NuxtLink to="/blogs" class="hover:border-b-2 border-primary">
-        Documentation
+    <div class="md:flex items-center justify-center gap-5 hidden">
+      <NuxtLink
+        :to="nav.route"
+        :class="cn('link', route.name == nav.key && 'font-medium border-b-2')"
+        v-for="nav in NAV_OPTIONS"
+        :key="nav.title"
+      >
+        {{ nav.title }}
       </NuxtLink>
     </div>
   </div>

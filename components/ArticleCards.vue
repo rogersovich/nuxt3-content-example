@@ -1,15 +1,14 @@
 <script setup lang="ts">
-defineProps({
-  articles: {
-    type: Array as PropType<ArticleResponse[]>,
-    required: true
-  },
-})
+interface Props {
+  articles: ArticleResponse[]
+}
+defineProps<Props>()
+
 </script>
 <template>
   <div class="grid-12 gap-6">
     <div
-      class="col-span-12 md:col-span-6 lg:col-span-4"
+      class="col-span-12 md:col-span-6 lg:col-span-4 xl:col-span-3"
       v-for="post in articles"
       :key="post.id"
     >
