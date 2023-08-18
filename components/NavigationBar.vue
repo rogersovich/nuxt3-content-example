@@ -32,9 +32,15 @@ const NAV_OPTIONS = [
     <div class="md:flex items-center justify-center gap-5 hidden">
       <NuxtLink
         :to="nav.route"
-        :class="cn('link', route.name == nav.key && 'font-medium border-b-2')"
+        :class="
+          cn(
+            'link',
+            '/' + route.path.split('/')[1] == nav.route &&
+              'font-medium border-b-2'
+          )
+        "
         v-for="nav in NAV_OPTIONS"
-        :key="nav.title"
+        :key="nav.key"
       >
         {{ nav.title }}
       </NuxtLink>

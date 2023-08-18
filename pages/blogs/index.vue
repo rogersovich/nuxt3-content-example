@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { data } = await useAsyncData("articles", () => {
-  return queryContent("articles").where({ _type: "json" }).findOne()
+const { data } = await useAsyncData("blogs", () => {
+  return queryContent("blogs").where({ _type: "json" }).findOne()
 })
 
-const articles = data.value?.body as ArticleResponse[]
+const blogs = data.value?.body as ArticleResponse[]
 </script>
 <template>
   <div class="w-full md:flex items-center justify-center pt-10">
@@ -19,7 +19,7 @@ const articles = data.value?.body as ArticleResponse[]
         >
           List of Blogs
         </div>
-        <ArticleCards :articles="articles" />
+        <ArticleCards :articles="blogs" />
       </div>
     </div>
   </div>

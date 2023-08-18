@@ -3,7 +3,6 @@ interface Props {
   articles: ArticleResponse[]
 }
 defineProps<Props>()
-
 </script>
 <template>
   <div class="grid-12 gap-6">
@@ -12,30 +11,32 @@ defineProps<Props>()
       v-for="post in articles"
       :key="post.id"
     >
-      <div
-        class="card-base group border-2 border-slate-300 hover:border-emerald-500 cursor-pointer"
-      >
-        <div class="mb-4">
-          <nuxt-img
-            :src="`/img/${post.image}`"
-            class="w-full h-[150px] object-cover rounded-md"
-          />
-        </div>
-        <div>
-          <div v-for="(tags, i) in post.tags" :key="i">
+      <NuxtLink :to="`blogs/${slugify(post.title)}`">
+        <div
+          class="card-base group border-2 border-slate-300 hover:border-emerald-500 cursor-pointer ease-in duration-100 hover:scale-105"
+        >
+          <div class="mb-4">
+            <nuxt-img
+              :src="`/img/${post.image}`"
+              class="w-full h-[150px] object-cover rounded-md"
+            />
+          </div>
+          <div>
+            <div v-for="(tags, i) in post.tags" :key="i">
+              <div
+                class="bg-slate-300 py-0.5 rounded-full px-3 w-fit mb-2 text-sm"
+              >
+                {{ tags }}
+              </div>
+            </div>
             <div
-              class="bg-slate-300 py-0.5 rounded-full px-3 w-fit mb-2 text-sm"
+              class="text-xl text-slate-700 group-hover:text-primary-700 font-bold"
             >
-              {{ tags }}
+              {{ post.title }}
             </div>
           </div>
-          <div
-            class="text-xl text-slate-700 group-hover:text-primary-700 font-bold"
-          >
-            {{ post.title }}
-          </div>
         </div>
-      </div>
+      </NuxtLink>
     </div>
   </div>
 </template>
