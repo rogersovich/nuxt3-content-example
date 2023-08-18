@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/color-mode",
     "@nuxt/image",
+    "@vueuse/nuxt",
   ],
   app: {
     pageTransition: { name: "page", mode: "out-in" },
@@ -28,5 +29,8 @@ export default defineNuxtConfig({
     highlight: {
       theme: "dracula-soft",
     },
+  },
+  imports: {
+    dirs: ["composables/**", "utils/**", "types", "stores"],
   },
 })

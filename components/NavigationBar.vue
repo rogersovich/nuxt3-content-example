@@ -1,6 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { x, y } = useWindowScroll()
+const active = ref(true)
+</script>
 <template>
-  <div class="w-full fcb px-[5%] lg:px-[15%] py-6">
+  <div
+    :class="
+      cn('nav-app', {
+        'border-b-2': y > 10,
+      })
+    "
+  >
     <NuxtLink to="/">
       <div class="text-3xl font-bold">
         Nuxt <span class="rainbow-text">Content</span>
